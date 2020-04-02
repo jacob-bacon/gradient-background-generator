@@ -15,6 +15,7 @@ updateBg();
 
 color1.addEventListener("input", updateBg);
 color2.addEventListener("input", updateBg);
+direction.addEventListener("input", updateBg);
 
 
 
