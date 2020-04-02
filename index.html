@@ -5,13 +5,23 @@
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="styles.css">
 
-        <title>Gradient Background</title>
+        <title>CSS Gradient Background Generator</title>
     </head>
     <body>
-        <div>
-            <h1>Background Generator</h1>
-            <input class="color1" type="color" name="color1" value="#e0e0e0">
-            <input class="color2" type="color" name="color2" value="#44444">
+        <div class="controlsContainer">
+            <h1>CSS Gradient Background Generator</h1>
+            <hr/>
+            
+            <form>
+                <label>Colors:</label>
+                <input class="color1" type="color" name="color1" value="#e0e0e0">
+                <input class="color2" type="color" name="color2" value="#44444">
+                <br>
+                <label for="direction">Gradient direction (deg):</label>
+                <input type="text" class="direction" id="direction" name="gradientDirection" value="90">
+            </form>
+
+            <hr/>
             <h2>Current CSS Background</h2>
             <h5></h5>
         </div>

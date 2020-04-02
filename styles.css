@@ -11,13 +11,24 @@ body {
     margin: 0;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: .5rem;
     text-transform: uppercase;
     color: rgba(255, 255, 255, .75);
     background: linear-gradient(to right, #e0e0e0, #444444);
 }
 
+.controlsContainer {
+    background-color: rgba(255,255,255,.75);
+    color: #444;
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,.9);
+}
+
 h5 {
     letter-spacing: normal;
     text-transform: none;
+}
+
+form {
+    padding: 2rem 0;
+    text-align: left;
 }
