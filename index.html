@@ -18,8 +18,10 @@
                 <input class="color2" type="color" name="color2" value="#44444">
                 <br>
                 <label for="direction">Gradient direction (deg):</label>
-                <input type="text" class="direction" id="direction" name="gradientDirection" value="90">
+                <input type="range" class="direction" id="direction" name="gradientDirection" min="0" max="360" value="90">
             </form>
+
+            <canvas id="colorWheel" width="300" height="300"></canvas>
 
             <hr/>
             <h2>Current CSS Background</h2>

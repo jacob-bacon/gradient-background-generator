@@ -32,3 +32,8 @@ form {
     padding: 2rem 0;
     text-align: left;
 }
+
+#colorWheel {
+    height: 300px;
+    width: 300px;
+}
