@@ -1,33 +1,30 @@
-var color1 = document.querySelector(".color1");
-var color2 = document.querySelector(".color2");
-var direction = document.querySelector(".direction");
-var bgTextOutput = document.querySelector("h5");
-var body = document.querySelector("body");
-var bgStyleText = "";
+let color1 = document.querySelector(".color1");
+let color2 = document.querySelector(".color2");
+let direction = document.querySelector(".direction");
+let bgTextOutput = document.querySelector("h5");
+let body = document.querySelector("body");
+let bgStyleText = "";
 
-const canvas = document.getElementById('colorWheel');
-const ctx = canvas.getContext('2d');
 
-function drawColorWheel() {
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const wheelOuterRadius = centerX - 5;
-    const wheelInnerRadius = centerX - 35;
-    const arcStartDeg = 0;
-    const arcEndDeg = 2;
-    
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 1;
-    
-    //outer wheel border
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, wheelOuterRadius, arcStartDeg, arcEndDeg * Math.PI);
-    ctx.stroke();
+function fillColorWheel(colors) {
+    const wheel = document.getElementById('colorWheel');
+    const radius = wheel.offsetWidth / 2;
+    const degreeStep = 360 / colors.length;
+    let rotation = degreeStep;
+    let wheelBgStyleText = "";
 
-    //inner wheel border
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, wheelInnerRadius, arcStartDeg, arcEndDeg * Math.PI);
-    ctx.stroke();
+    for (let i = 0; i < colors.length; i++) {
+        let colorCoordX = radius - (radius * (Math.cos(rotation)));
+        let colorCoordY = radius - (radius * (Math.sin(rotation)));
+        let color = colors[i][0];
+        wheelBgStyleText = wheelBgStyleText + `radial-gradient(circle at 
+            ${colorCoordX}px ${colorCoordY}px, ${color} 50%, transparent),`;
+        
+        rotation = rotation + degreeStep;
+    }
+    wheelBgStyleText = wheelBgStyleText.replace(/.$/,";");
+    console.log(wheelBgStyleText);
+    wheel.style.background = wheelBgStyleText;
 }
 
 
@@ -38,7 +35,7 @@ function updateBg(){
 };
 
 updateBg();
-drawColorWheel();
+fillColorWheel([['red'], ['orange'], ['yellow'], ['green'], ['blue'], ['indigo'], ['violet']]);
 
 color1.addEventListener("input", updateBg);
 color2.addEventListener("input", updateBg);
@@ -47,3 +44,13 @@ direction.addEventListener("input", updateBg);
 
 
 
+//for finding the center points for the gradients along the edge of the color wheel:
+//where d = the angle of rotation
+//and r = the radius of the wheel
+//and x,y = the thing we want to know
+//x = (r * cos(d))
+//y = (r * sin(d))
+
+//there are 7 colors, so to get d, we need to divide the circle by 7 (360/7 = 51.42857142857143)
+//this needs to increase by d for each point we plot
+//the radius of the circle needs to be determined by the width of the div/2
