@@ -7,10 +7,10 @@ let bgStyleText = "";
 
 
 function fillColorWheel(colors) {
-    const wheel = document.getElementById('colorWheel');
-    const radius = wheel.offsetWidth / 2;
-    const degreeStep = 360 / colors.length;
-    let rotation = degreeStep;
+    let wheel = document.getElementById("colorWheel");
+    let radius = wheel.offsetWidth / 2;
+    let degreeStep = 360 / colors.length;
+    let rotation = 0;
     let wheelBgStyleText = "";
 
     for (let i = 0; i < colors.length; i++) {
@@ -18,12 +18,12 @@ function fillColorWheel(colors) {
         let colorCoordY = radius - (radius * (Math.sin(rotation)));
         let color = colors[i][0];
         wheelBgStyleText = wheelBgStyleText + `radial-gradient(circle at 
-            ${colorCoordX}px ${colorCoordY}px, ${color} 50%, transparent),`;
+            ${colorCoordX}px ${colorCoordY}px, ${color}, transparent 40%),`;
         
+        console.log(`color: ${color}, rotation: ${rotation}, step: ${degreeStep}, X: ${colorCoordX}, Y: ${colorCoordY}`);
         rotation = rotation + degreeStep;
     }
-    wheelBgStyleText = wheelBgStyleText.replace(/.$/,";");
-    console.log(wheelBgStyleText);
+    wheelBgStyleText = wheelBgStyleText.replace(/.$/,"");
     wheel.style.background = wheelBgStyleText;
 }
 
