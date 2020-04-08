@@ -19,6 +19,7 @@ function fillColorWheel(colors) {
     //and x,y = the thing we want to know
     //x = (r * cos(d))
     //y = (r * sin(d))
+    //subtract all of that from the radius because (0,0) is at the top left corner, not the center of the div
 
     for (let i = 0; i < colors.length; i++) {
         let colorCoordX = radius - (radius * (Math.cos(rotation)));
