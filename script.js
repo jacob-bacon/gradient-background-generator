@@ -9,20 +9,28 @@ let bgStyleText = "";
 function fillColorWheel(colors) {
     let wheel = document.getElementById("colorWheel");
     let radius = wheel.offsetWidth / 2;
-    let degreeStep = 360 / colors.length;
+    let degreeStep = 270.225 / colors.length;
     let rotation = 0;
     let wheelBgStyleText = "";
+
+    //for determining the center points for the gradients along the edge of the color wheel:
+    //where d = the angle of rotation
+    //and r = the radius of the wheel
+    //and x,y = the thing we want to know
+    //x = (r * cos(d))
+    //y = (r * sin(d))
 
     for (let i = 0; i < colors.length; i++) {
         let colorCoordX = radius - (radius * (Math.cos(rotation)));
         let colorCoordY = radius - (radius * (Math.sin(rotation)));
         let color = colors[i][0];
+
         wheelBgStyleText = wheelBgStyleText + `radial-gradient(circle at 
-            ${colorCoordX}px ${colorCoordY}px, ${color}, transparent 40%),`;
+            ${colorCoordX}px ${colorCoordY}px, ${color} 2%, transparent 40%),`;
         
-        console.log(`color: ${color}, rotation: ${rotation}, step: ${degreeStep}, X: ${colorCoordX}, Y: ${colorCoordY}`);
         rotation = rotation + degreeStep;
     }
+
     wheelBgStyleText = wheelBgStyleText.replace(/.$/,"");
     wheel.style.background = wheelBgStyleText;
 }
@@ -40,17 +48,3 @@ fillColorWheel([['red'], ['orange'], ['yellow'], ['green'], ['blue'], ['indigo']
 color1.addEventListener("input", updateBg);
 color2.addEventListener("input", updateBg);
 direction.addEventListener("input", updateBg);
-
-
-
-
-//for finding the center points for the gradients along the edge of the color wheel:
-//where d = the angle of rotation
-//and r = the radius of the wheel
-//and x,y = the thing we want to know
-//x = (r * cos(d))
-//y = (r * sin(d))
-
-//there are 7 colors, so to get d, we need to divide the circle by 7 (360/7 = 51.42857142857143)
-//this needs to increase by d for each point we plot
-//the radius of the circle needs to be determined by the width of the div/2

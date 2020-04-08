@@ -33,10 +33,17 @@ form {
     text-align: left;
 }
 
-#colorWheel {
+.colorWheelContainer {
     display: inline-block;
     height: 300px;
     width: 300px;;
     border-radius: 100%;
-    background: radial-gradient(circle at 50% top, red, transparent);
+    background: #ffffff;
+}
+
+#colorWheel {
+    display: block;
+    height: 300px;
+    width: 300px;;
+    border-radius: 100%;
 }
