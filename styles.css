@@ -4,23 +4,19 @@ html {
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100%;
     padding: 0;
     margin: 0;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
     color: rgba(255, 255, 255, .75);
     background: linear-gradient(to right, #e0e0e0, #444444);
 }
 
 .controlsContainer {
-    background-color: rgba(255,255,255,.75);
+    background-color: rgba(0, 0, 0, .75);
     color: #444;
     padding: 1.5rem;
-    border: 1px solid rgba(255,255,255,.9);
 }
 
 h5 {
@@ -33,12 +29,16 @@ form {
     text-align: left;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .colorWheelContainer {
     display: inline-block;
-    height: 300px;
-    width: 300px;;
-    border-radius: 100%;
     background: #ffffff;
+    border-radius: 100%;
+    border: 2px solid black;
 }
 
 #colorWheel {
@@ -46,4 +46,27 @@ form {
     height: 300px;
     width: 300px;;
     border-radius: 100%;
+}
+
+#colorBar {
+    display: block;
+    width: 20px;
+    height: 100%;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border: 2px solid black;
+    background: linear-gradient(to bottom, white, black);
+}
+
+.pickerDot {
+    position: absolute;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 2px solid rgba(0, 0, 0, .75);
+    border-radius: 100%;
+    background: rgba(255, 255, 255, .75);
+    cursor: pointer;
 }
