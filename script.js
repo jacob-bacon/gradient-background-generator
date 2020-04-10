@@ -5,9 +5,56 @@ let bgTextOutput = document.querySelector("h5");
 let body = document.querySelector("body");
 let bgStyleText = "";
 
+const wheel = document.getElementById("colorWheel");
+const bar = document.getElementById("colorBar");
+const colorPicker1 = document.getElementById("pickerDot1");
+const colorPicker2 = document.getElementById("pickerDot2");
+const barPicker = document.getElementById("barDot");
+
+//get the position and dimensions of the color wheel and bar
+let wheelBounds = wheel.getBoundingClientRect();
+let barBounds = bar.getBoundingClientRect();
+let isMoving = false;
+let x = 0;
+let y = 0;
+
+//add event listeners for color picker mousedown, mousemove, mouseup
+let pickerArray = [colorPicker1, colorPicker2];
+
+for (let i = 0; i < pickerArray.length; i++) {
+    pickerArray[i].addEventListener('mousedown', e => {
+        x = e.clientX - wheelBounds.left;
+        y = e.clientY - wheelBounds.top;
+        isMoving = true;
+    });
+
+    pickerArray[i].addEventListener('mousemove', e => {
+        if (isMoving === true) {
+            movePicker(e, x, y, e.clientX - wheelBounds.left, e.clientY - wheelBounds.top);
+            x = e.clientX - wheelBounds.left;
+            y = e.clientY - wheelBounds.top;
+        };
+    });
+};
+
+window.addEventListener('mouseup', e => {
+    if (isMoving === true) {
+        movePicker(e, x, y, e.clientX - wheelBounds.left, e.clientY - wheelBounds.top);
+        x = 0;
+        y = 0;
+        isMoving = false;
+    };
+});
+
+function movePicker(pickerDot, x1, y1, x2, y2) {
+    pickerDot.preventDefault();
+    console.log(pickerDot);
+    pickerDot.style.left = x2 + "px";
+    pickerDot.style.top = y2 + "px";
+    console.log(`x1: ${x1}, y1: ${y1}, x2: ${x2}, y2: ${y2}`);
+}
 
 function fillColorWheel(colors) {
-    let wheel = document.getElementById("colorWheel");
     let radius = wheel.offsetWidth / 2;
     let degreeStep = 270.225 / colors.length;
     let rotation = 0;
