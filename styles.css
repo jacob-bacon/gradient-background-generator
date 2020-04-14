@@ -10,29 +10,49 @@ body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(255, 255, 255, .75);
-    background: linear-gradient(to right, #e0e0e0, #444444);
+    background: linear-gradient(to right, #dc84ff, #2dabff);
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#wrapper div {
+    margin-left: auto;
+}
+
+#rightPane {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+#rightPane button {
+    padding: .25em .5em;
+    margin: .25em 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+    background: rgb(53, 53, 53);
+    color: white;
+    cursor: pointer;
+}
+
+#rightPane button:hover {
+    background: rgb(61, 61, 61);
+}
+
+svg {
+    fill: white;
+    height: 24px;
+    width: 24px;
 }
 
 .controlsContainer {
-    background-color: rgba(0, 0, 0, .75);
     color: #444;
     padding: 1.5rem;
-}
-
-h5 {
-    letter-spacing: normal;
-    text-transform: none;
-}
-
-form {
-    padding: 2rem 0;
-    text-align: left;
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    
 }
 
 .colorWheelContainer {
@@ -45,7 +65,7 @@ form {
 #colorWheel {
     display: block;
     height: 300px;
-    width: 300px;;
+    width: 300px;
     border-radius: 100%;
 }
 
@@ -64,10 +84,15 @@ form {
 .pickerDot {
     position: absolute;
     display: inline-block;
+    z-index: 9;
     width: 8px;
     height: 8px;
     border: 2px solid rgba(0, 0, 0, .75);
     border-radius: 100%;
-    background: rgba(255, 255, 255, .75);
     cursor: pointer;
+}
+
+.activePickerDot {
+    border-color: red;
+    z-index: 10;
 }

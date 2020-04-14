@@ -6,56 +6,80 @@ let body = document.querySelector("body");
 let bgStyleText = "";
 
 const wheel = document.getElementById("colorWheel");
+let radius = wheel.offsetWidth / 2;
+let wheelCenterX = (wheel.getBoundingClientRect().left) + radius;
+let wheelCenterY = (wheel.getBoundingClientRect().top) + radius;
+
 const bar = document.getElementById("colorBar");
 const colorPicker1 = document.getElementById("pickerDot1");
 const colorPicker2 = document.getElementById("pickerDot2");
 const barPicker = document.getElementById("barDot");
 
-//get the position and dimensions of the color wheel and bar
-let wheelBounds = wheel.getBoundingClientRect();
-let barBounds = bar.getBoundingClientRect();
+let activePicker = document.querySelector(".activePickerDot");
 let isMoving = false;
-let x = 0;
-let y = 0;
 
-//add event listeners for color picker mousedown, mousemove, mouseup
-let pickerArray = [colorPicker1, colorPicker2];
+//add mousedown, mousemove, mouseup event listeners to all pickers
+let pickerArray = [colorPicker1, colorPicker2, barPicker];
 
-for (let i = 0; i < pickerArray.length; i++) {
+for (let i = 0; i < pickerArray.length; i++){
     pickerArray[i].addEventListener('mousedown', e => {
-        x = e.clientX - wheelBounds.left;
-        y = e.clientY - wheelBounds.top;
-        isMoving = true;
-    });
-
-    pickerArray[i].addEventListener('mousemove', e => {
-        if (isMoving === true) {
-            movePicker(e, x, y, e.clientX - wheelBounds.left, e.clientY - wheelBounds.top);
-            x = e.clientX - wheelBounds.left;
-            y = e.clientY - wheelBounds.top;
-        };
+        //check all pickers and remove '.activePickerDot' so only the one clicked is active
+        for (let p = 0; p < pickerArray.length; p++) {
+            if (pickerArray[p].classList.contains("activePickerDot")) {
+                pickerArray[p].classList.remove("activePickerDot");
+            }
+        }
+        e.preventDefault();
+        activePicker = pickerArray[i];
+        activePicker.classList.add("activePickerDot");
     });
 };
 
-window.addEventListener('mouseup', e => {
+let halfPickerWidth = activePicker.offsetWidth / 2;
+
+wheel.onmousedown = function startMove() {
+    isMoving = true;
+    wheel.onmousemove = movePicker;
+};
+
+window.onmouseup = endMove;
+
+function endMove() {
+    isMoving = false;
+};
+
+function movePicker(e) {
     if (isMoving === true) {
-        movePicker(e, x, y, e.clientX - wheelBounds.left, e.clientY - wheelBounds.top);
-        x = 0;
-        y = 0;
-        isMoving = false;
+        //use pythagorean theorem to find active picker's distance from wheel center
+        let a = 0;
+        let b = 0;
+
+        //while wheel center is treated as (0,0), math operation changes based on whether picker
+        //position is +/- x or +/- y
+        if ((e.clientX >= wheelCenterX)) { 
+            a = Math.pow((e.clientX - wheelCenterX), 2);
+        } else {
+            a = Math.pow((wheelCenterX - e.clientX), 2);
+        };
+        if ((e.clientY >= wheelCenterY)) { 
+            b = Math.pow((e.clientY - wheelCenterY), 2);
+        } else {
+            b = Math.pow((wheelCenterY - e.clientY), 2);
+        };
+
+        let c = Math.sqrt(a + b);
+
+        if (c <= radius) {
+            activePicker.style.left = (e.clientX - halfPickerWidth) + "px";
+            activePicker.style.top = (e.clientY - halfPickerWidth) + "px";
+        }
+    } else {
+        return
     };
-});
+};
 
-function movePicker(pickerDot, x1, y1, x2, y2) {
-    pickerDot.preventDefault();
-    console.log(pickerDot);
-    pickerDot.style.left = x2 + "px";
-    pickerDot.style.top = y2 + "px";
-    console.log(`x1: ${x1}, y1: ${y1}, x2: ${x2}, y2: ${y2}`);
-}
-
+//filling the color wheel
 function fillColorWheel(colors) {
-    let radius = wheel.offsetWidth / 2;
     let degreeStep = 270.225 / colors.length;
     let rotation = 0;
     let wheelBgStyleText = "";
@@ -66,7 +90,8 @@ function fillColorWheel(colors) {
     //and x,y = the thing we want to know
     //x = (r * cos(d))
     //y = (r * sin(d))
-    //subtract all of that from the radius because (0,0) is at the top left corner, not the center of the div
+    //because (0,0) is at the top left corner, not the center of the div:
+    //x = radius - x; y = radius - y
 
     for (let i = 0; i < colors.length; i++) {
         let colorCoordX = radius - (radius * (Math.cos(rotation)));
