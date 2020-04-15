@@ -2,7 +2,7 @@ let color1 = document.querySelector(".color1");
 let color2 = document.querySelector(".color2");
 let direction = document.querySelector(".direction");
 let bgTextOutput = document.querySelector("h5");
-let body = document.querySelector("body");
+let body = document.getElementById("gradientContainer");
 let bgStyleText = "";
 
 const wheel = document.getElementById("colorWheel");

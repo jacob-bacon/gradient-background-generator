@@ -7,35 +7,36 @@
 
         <title>CSS Gradient Background Generator</title>
     </head>
-    <body>
-        <div id="wrapper">            
-            <div class="controlsContainer">            
-                <input class="color1" type="color" name="color1" value="#dc84ff">
-                <input class="color2" type="color" name="color2" value="#2dabff">
-                <input type="range" class="direction" id="direction" name="gradientDirection" min="0" max="360" value="90">
-
-                <div class="colorWheelContainer">
-                    <div id="colorWheel">
-                        <span id="pickerDot1" class="pickerDot activePickerDot"></span>
-                        <span id="pickerDot2" class="pickerDot"></span>
-                    </div>
-                </div>
-
+    <body class="flex-col">
+        <div id="headerBar">
+            <div class="container">
+                <h4>Gradient Generator</h4>
+            </div>
+        </div>
+        <div id="controlBar">
+            <div class="container flex-row">
                 <div>
+                    <input class="color1" type="color" name="color1" value="#dc84ff">
+                    <input class="color2" type="color" name="color2" value="#2dabff">
+                    <input type="range" class="direction" id="direction" name="gradientDirection" min="0" max="360" value="90">
+                </div>
+                <div>
+                    <div class="colorWheelContainer">
+                        <div id="colorWheel">
+                            <span id="pickerDot1" class="pickerDot activePickerDot"></span>
+                            <span id="pickerDot2" class="pickerDot"></span>
+                        </div>
+                    </div>
+
                     <div id="colorBar">
                         <span id="barDot" class="pickerDot"></span>
                     </div>
                 </div>
-                <h5></h5>
-            </div>
-            <div id="rightPane">
-                <button>
-                    <svg height="512px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M256,512C114.625,512,0,397.375,0,256S114.625,0,256,0s256,114.625,256,256S397.375,512,256,512z M256,64  C149.969,64,64,149.969,64,256s85.969,192,192,192c106.03,0,192-85.969,192-192S362.031,64,256,64z M128,256  c0-70.688,57.312-128,128-128v256C185.312,384,128,326.688,128,256z"/></svg>
-                </button>
-                <button id="color1"></button>
-                <button id="color2"></button>
             </div>
         </div>
+        <div id="gradientContainer">
+            <h5>&nbsp;</h5>
+        </div>            
     </body>
 
     <script type="text/javascript" src="script.js"></script>

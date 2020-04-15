@@ -3,45 +3,46 @@ html {
 }
 
 body {
-    display: flex;
     height: 100%;
     padding: 0;
     margin: 0;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
     color: rgba(255, 255, 255, .75);
-    background: linear-gradient(to right, #dc84ff, #2dabff);
+    background: #555;
 }
 
-#wrapper {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+h4, h5 {
+    display: block;
+    bottom: 1em;
+    margin: 0;
+    padding: 1em 0;
+    text-align: center;
 }
 
-#wrapper div {
-    margin-left: auto;
+#headerBar {
+    height: 50px;
+    background: rgb(31, 31, 31);
 }
 
-#rightPane {
+#controlBar {
+    padding: 1.5em 0;
+    background: rgb(46, 46, 46);
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+.flex-col {
     display: flex;
     flex-direction: column;
-    width: auto;
 }
 
-#rightPane button {
-    padding: .25em .5em;
-    margin: .25em 0;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: none;
-    background: rgb(53, 53, 53);
-    color: white;
-    cursor: pointer;
-}
-
-#rightPane button:hover {
-    background: rgb(61, 61, 61);
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 svg {
@@ -50,9 +51,9 @@ svg {
     width: 24px;
 }
 
-.controlsContainer {
-    color: #444;
-    padding: 1.5rem;
+#gradientContainer {
+    height: 100%;
+    background: linear-gradient(to right, #dc84ff, #2dabff);
 }
 
 .colorWheelContainer {
@@ -64,8 +65,8 @@ svg {
 
 #colorWheel {
     display: block;
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     border-radius: 100%;
 }
 
