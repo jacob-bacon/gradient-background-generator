@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -53,6 +54,7 @@ svg {
 
 #gradientContainer {
     height: 100%;
+    min-height: 200px;
     background: linear-gradient(to right, #dc84ff, #2dabff);
 }
 
@@ -72,14 +74,15 @@ svg {
 
 #colorBar {
     display: block;
-    width: 20px;
-    height: 100%;
+    width: 80%;
+    height: 16px;
+    margin: .5em auto 0 auto;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border: 2px solid black;
-    background: linear-gradient(to bottom, white, black);
+    background: linear-gradient(to right, white, black);
 }
 
 .pickerDot {
@@ -96,4 +99,30 @@ svg {
 .activePickerDot {
     border-color: red;
     z-index: 10;
+}
+
+#barDot {
+    margin-top: 2px;
+}
+
+.swatchContainer {
+    margin: .25em 1em .25em 0;
+    padding: .75em;
+    justify-content: left;
+    font-size: .75em;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.swatchContainer:hover, .swatchContainer.active {
+    background-color: rgb(56, 56, 56);
+}
+
+.swatch {
+    display: inline-block;
+    border-radius: 3px;
+    height: 30px;
+    width: 30px;
+    border: 2px solid white;
+    margin-right: .5em;
 }

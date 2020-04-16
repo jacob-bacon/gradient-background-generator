@@ -15,12 +15,27 @@
         </div>
         <div id="controlBar">
             <div class="container flex-row">
-                <div>
+                <div class="flex-col">
+                    <div class="flex-row swatchContainer active">
+                        <div id="color1" class="swatch">&nbsp;</div>
+                        <div class="flex-col">
+                            <span>RGB:</span>
+                            <span>HEX:</span>
+                        </div>
+                    </div>
+                    <div class="flex-row swatchContainer">
+                        <div id="color2" class="swatch">&nbsp;</div>
+                        <div class="flex-col">
+                            <span>RGB:</span>
+                            <span>HEX:</span>
+                        </div>
+                    </div>
+
                     <input class="color1" type="color" name="color1" value="#dc84ff">
                     <input class="color2" type="color" name="color2" value="#2dabff">
                     <input type="range" class="direction" id="direction" name="gradientDirection" min="0" max="360" value="90">
                 </div>
-                <div>
+                <div class="flex-col">
                     <div class="colorWheelContainer">
                         <div id="colorWheel">
                             <span id="pickerDot1" class="pickerDot activePickerDot"></span>
