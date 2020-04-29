@@ -97,7 +97,7 @@ function fillColorWheel(colors) {
         let colorCoordX = radius - (radius * (Math.cos(rotation)));
         let colorCoordY = radius - (radius * (Math.sin(rotation)));
         let color = colors[i][0];
-        console.log(`${colorCoordX}, ${colorCoordY}`);
+        
         wheelBgStyleText = wheelBgStyleText + `radial-gradient(circle at 
             ${colorCoordX}px ${colorCoordY}px, ${color} 2%, transparent 40%),`;
         
