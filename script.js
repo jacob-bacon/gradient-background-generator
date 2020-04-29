@@ -29,7 +29,7 @@ for (let i = 0; i < pickerArray.length; i++){
                 pickerArray[p].classList.remove("activePickerDot");
             }
         }
-        e.preventDefault();
+
         activePicker = pickerArray[i];
         activePicker.classList.add("activePickerDot");
     });
@@ -37,7 +37,8 @@ for (let i = 0; i < pickerArray.length; i++){
 
 let halfPickerWidth = activePicker.offsetWidth / 2;
 
-wheel.onmousedown = function startMove() {
+wheel.onmousedown = function startMove(e) {
+    e.preventDefault();
     isMoving = true;
     wheel.onmousemove = movePicker;
 };
@@ -97,7 +98,7 @@ function fillColorWheel(colors) {
         let colorCoordX = radius - (radius * (Math.cos(rotation)));
         let colorCoordY = radius - (radius * (Math.sin(rotation)));
         let color = colors[i][0];
-        
+
         wheelBgStyleText = wheelBgStyleText + `radial-gradient(circle at 
             ${colorCoordX}px ${colorCoordY}px, ${color} 2%, transparent 40%),`;
         
