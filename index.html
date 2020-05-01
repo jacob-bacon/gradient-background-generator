@@ -35,16 +35,16 @@
                     <input class="color2" type="color" name="color2" value="#2dabff">
                     <input type="range" class="direction" id="direction" name="gradientDirection" min="0" max="360" value="90">
                 </div>
+                
                 <div class="flex-col">
-                    <div class="colorWheelContainer">
-                        <div id="colorWheel">
-                            <span id="pickerDot1" class="pickerDot activePickerDot"></span>
-                            <span id="pickerDot2" class="pickerDot"></span>
-                        </div>
+                    <div>
+                        <canvas id="colorWheel" class="moveable" height="204px" width="204px"></canvas>
+                        <span id="wheelPicker" class="pickerDot moveable"></span>
                     </div>
-
+                    <img id="colorWheelSrc" src="images/colorWheel.png" width="204" height="204">
+                    
                     <div id="colorBar">
-                        <span id="barDot" class="pickerDot"></span>
+                        <span id="barPicker" class="pickerDot moveable"></span>
                     </div>
                 </div>
             </div>

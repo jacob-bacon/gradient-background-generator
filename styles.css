@@ -96,12 +96,7 @@ svg {
     cursor: pointer;
 }
 
-.activePickerDot {
-    border-color: red;
-    z-index: 10;
-}
-
-#barDot {
+#barPicker {
     margin-top: 2px;
 }
 
@@ -125,4 +120,12 @@ svg {
     width: 30px;
     border: 2px solid white;
     margin-right: .5em;
+}
+
+#colorWheelSrc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 204px;
+    height: 204px;
 }
