@@ -70,6 +70,7 @@ svg {
     height: 200px;
     width: 200px;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 #colorBar {
@@ -85,7 +86,7 @@ svg {
     background: linear-gradient(to right, white, black);
 }
 
-.pickerDot {
+#colorPicker {
     position: absolute;
     display: inline-block;
     z-index: 9;
@@ -94,10 +95,6 @@ svg {
     border: 2px solid rgba(0, 0, 0, .75);
     border-radius: 100%;
     cursor: pointer;
-}
-
-#barPicker {
-    margin-top: 2px;
 }
 
 .swatchContainer {
