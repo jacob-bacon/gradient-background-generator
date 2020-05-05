@@ -46,12 +46,6 @@ h4, h5 {
     justify-content: center;
 }
 
-svg {
-    fill: white;
-    height: 24px;
-    width: 24px;
-}
-
 #gradientContainer {
     height: 100%;
     min-height: 200px;
@@ -69,30 +63,6 @@ svg {
     display: block;
     height: 200px;
     width: 200px;
-    border-radius: 100%;
-    cursor: pointer;
-}
-
-#colorBar {
-    display: block;
-    width: 80%;
-    height: 16px;
-    margin: .5em auto 0 auto;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border: 2px solid black;
-    background: linear-gradient(to right, white, black);
-}
-
-#colorPicker {
-    position: absolute;
-    display: inline-block;
-    z-index: 9;
-    width: 8px;
-    height: 8px;
-    border: 2px solid rgba(0, 0, 0, .75);
     border-radius: 100%;
     cursor: pointer;
 }
