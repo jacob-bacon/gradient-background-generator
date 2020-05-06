@@ -11,7 +11,10 @@ function load() {
 
     const colorWheelCanvas = document.getElementById("colorWheel");
     const ctx = colorWheelCanvas.getContext("2d");
+    
     const colorWheelImage = document.getElementById("colorWheelSrc");
+    colorWheelImage.crossOrigin = "Anonymous";
+
     let canvasStartX = (colorWheelCanvas.getBoundingClientRect().left);
     let canvasStartY = (colorWheelCanvas.getBoundingClientRect().top);
     const pickerDiameter = 4;
@@ -23,6 +26,7 @@ function load() {
         canvasStartX = (colorWheelCanvas.getBoundingClientRect().left);
         canvasStartY = (colorWheelCanvas.getBoundingClientRect().top);        
         
+        ctx.clearRect(0, 0, colorWheelCanvas.width, colorWheelCanvas.height);
         ctx.drawImage(colorWheelImage, 0, 0, 204, 204, 0, 0, 204, 204);
         colorWheelImage.style.display = "none";
     
@@ -31,11 +35,15 @@ function load() {
         ctx.lineWidth = 2;
         ctx.stroke();
         
-        console.log(Math.round(pickerX), Math.round(pickerY));
         pickerPos = [pickerX, pickerY];
+        getPixelColor(pickerPos);
         return pickerPos;
     };
     
+    function getPixelColor(pickerCoords) {
+        var pixelData = ctx.getImageData(pickerCoords[0], pickerCoords[1], 1, 1).data;
+        console.log(pixelData);
+    };
 
     function updateBg(){
         bgStyleText = `linear-gradient(${direction.value}deg, ${color1.value}, ${color2.value})`;
@@ -48,13 +56,13 @@ function load() {
     colorWheelCanvas.addEventListener("mousedown", e => {
         e.preventDefault();
         isMoving = true;
-        drawColorWheel(e.clientX - canvasStartX, e.clientY - canvasStartY);
+        getPixelColor(drawColorWheel(e.clientX - canvasStartX, e.clientY - canvasStartY));
     });
 
     colorWheelCanvas.addEventListener("mousemove", e => {
         if (isMoving === true) {
             e.preventDefault();
-            drawColorWheel(e.clientX - canvasStartX, e.clientY - canvasStartY);
+            getPixelColor(drawColorWheel(e.clientX - canvasStartX, e.clientY - canvasStartY));
         };
     });
 
@@ -70,7 +78,7 @@ function load() {
     color2.addEventListener("input", updateBg);
     direction.addEventListener("input", updateBg);
 
-    
+    //for setting a random picker position on page load
     function randomIntBetween(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
