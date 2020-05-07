@@ -52,7 +52,7 @@ function load() {
     });
 
     window.addEventListener("resize", e => {
-        drawColorWheel(pickerPos[0], pickerPos[1]);
+        drawColorWheel(pickerPos);
     });
 
     color1.addEventListener("input", updateBg);
@@ -77,8 +77,7 @@ function load() {
         ctx.lineWidth = 2;
         ctx.stroke();
         
-        pickerPos = pickerCoords;
-        getPixelColor(pickerPos);
+        getPixelColor(pickerCoords);
         return pickerCoords;
     };
 
