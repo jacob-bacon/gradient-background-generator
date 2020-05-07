@@ -77,6 +77,7 @@ function load() {
         ctx.lineWidth = 2;
         ctx.stroke();
         
+        pickerPos = pickerCoords;
         getPixelColor(pickerPos);
         return pickerCoords;
     };
