@@ -66,7 +66,7 @@ function load() {
 
     function drawColorWheel(pickerCoords) {
         canvasStartX = (colorWheelCanvas.getBoundingClientRect().left);
-        canvasStartY = (colorWheelCanvas.getBoundingClientRect().top);        
+        canvasStartY = (colorWheelCanvas.getBoundingClientRect().top);    
         
         ctx.clearRect(0, 0, colorWheelCanvas.width, colorWheelCanvas.height);
         ctx.drawImage(colorWheelImage, 0, 0, 204, 204, 0, 0, 204, 204);
@@ -92,7 +92,7 @@ function load() {
     
     function getPixelColor(pickerCoords) {
         var pixelData = ctx.getImageData(pickerCoords[0], pickerCoords[1], 1, 1).data;
-        console.log(pixelData);
+        return pixelData;
     };
 
     function updateBg(){
