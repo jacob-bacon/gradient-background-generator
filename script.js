@@ -87,6 +87,7 @@ function load() {
     }
 
     function fillSwatch(color) {
+        console.log(color);
         document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
         drawColorWheel(color.coords);
     };
