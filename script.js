@@ -18,7 +18,7 @@ function load() {
     let canvasStartY = (colorWheelCanvas.getBoundingClientRect().top);
     
     let initialColors = document.querySelectorAll(".swatch");
-    let colorList = [];
+    //let colorList = [];
     
     let bgStyleText = "";
 
@@ -62,7 +62,7 @@ function load() {
     pickerPos = drawColorWheel(randomCoords());
 
     initialColors.forEach(addColor);
-    colorList.forEach(fillSwatch);
+    //colorList.forEach(fillSwatch);
 
     function drawColorWheel(pickerCoords) {
         canvasStartX = (colorWheelCanvas.getBoundingClientRect().left);
@@ -83,7 +83,9 @@ function load() {
 
     function addColor(color) {
         let coords = randomCoords();
-        colorList.push(new Color(color.id, coords, getPixelColor(coords)));
+        document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
+
+        //colorList.push(new Color(color.id, coords, getPixelColor(coords)));
     }
 
     function fillSwatch(color) {
