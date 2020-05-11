@@ -81,9 +81,9 @@ function load() {
             ctx.arc(pickerCoords[0] + pickerRadius, pickerCoords[1] + pickerRadius, pickerDiameter, 0, 2 * Math.PI);
             ctx.lineWidth = 2;
             ctx.stroke();
+
+            getPixelColor(pickerCoords);
         }
-        
-        getPixelColor(pickerCoords);
         return pickerCoords;
     };
 
