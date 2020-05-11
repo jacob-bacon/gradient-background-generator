@@ -8,7 +8,7 @@ function load() {
     
     const pickerDiameter = 4;
     const pickerRadius = pickerDiameter / 2;
-    let pickerPos = [0,0];
+    let pickerPos = [];
     let isMoving = false;
 
     const colorWheelCanvas = document.getElementById("colorWheel");
@@ -59,7 +59,7 @@ function load() {
     color2.addEventListener("input", updateBg);
     direction.addEventListener("input", updateBg);
 
-    pickerPos = drawColorWheel(randomCoords());
+    //pickerPos = drawColorWheel(randomCoords());
 
     let activeSwatchId = (document.querySelectorAll(".activeSwatch"))[0].childNodes[1].id;
 
