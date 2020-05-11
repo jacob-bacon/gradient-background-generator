@@ -82,7 +82,8 @@ function load() {
     };
 
     function addColor(color) {
-        let coords = randomCoords();
+        color.coords = randomCoords();
+        color.rgb = getPixelColor(color.coords);
         document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
 
         //colorList.push(new Color(color.id, coords, getPixelColor(coords)));
