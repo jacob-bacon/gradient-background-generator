@@ -81,12 +81,11 @@ function load() {
         return pickerCoords;
     };
 
-    function addColor(color) {
-        color.coords = randomCoords();
-        color.rgb = getPixelColor(color.coords);
-        document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
-
-        //colorList.push(new Color(color.id, coords, getPixelColor(coords)));
+    function addColor(swatch) {
+        let coords = randomCoords();
+        let color = new Color(swatch.swatchId, coords, getPixelColor(coords));
+        
+        swatch.style.background = `rgba(${(color.rgb).join()})`;
     }
 
     function fillSwatch(color) {
@@ -104,7 +103,7 @@ function load() {
         body.style.background = bgStyleText;
     };
 
-    //for setting a random picker position on page load
+    //for setting a random picker for initial colors
     function randomCoords() {
         let x = Math.floor(Math.random() * (170 - 30 + 1) + 30);
         let y = Math.floor(Math.random() * (170 - 30 + 1) + 30);
