@@ -83,7 +83,7 @@ function load() {
 
     function addColor(swatch) {
         let coords = randomCoords();
-        colorList.push(new Color(swatch.swatchId, coords, getPixelColor(coords)));
+        colorList.push(new Color(swatch.id, coords, getPixelColor(coords)));
     }
 
     function fillSwatch(color) {
