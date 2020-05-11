@@ -63,7 +63,6 @@ function load() {
 
     let activeSwatchId = (document.querySelectorAll(".activeSwatch"))[0].childNodes[1].id;
 
-    console.log(activeSwatchId);
     drawColorWheel();
     initialColors.forEach(addColor);
     colorList.forEach(fillSwatch);
