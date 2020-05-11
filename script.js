@@ -61,8 +61,10 @@ function load() {
 
     pickerPos = drawColorWheel(randomCoords());
 
-    let selectedSwatch = document.querySelector(".activeSwatch").id;
+    let activeSwatchId = (document.querySelectorAll(".activeSwatch"))[0].childNodes[1].id;
 
+    console.log(activeSwatchId);
+    drawColorWheel();
     initialColors.forEach(addColor);
     colorList.forEach(fillSwatch);
 
@@ -73,11 +75,13 @@ function load() {
         ctx.clearRect(0, 0, colorWheelCanvas.width, colorWheelCanvas.height);
         ctx.drawImage(colorWheelImage, 0, 0, 204, 204, 0, 0, 204, 204);
         colorWheelImage.style.display = "none";
-    
-        ctx.beginPath();
-        ctx.arc(pickerCoords[0] + pickerRadius, pickerCoords[1] + pickerRadius, pickerDiameter, 0, 2 * Math.PI);
-        ctx.lineWidth = 2;
-        ctx.stroke();
+        
+        if (pickerCoords !== undefined) {
+            ctx.beginPath();
+            ctx.arc(pickerCoords[0] + pickerRadius, pickerCoords[1] + pickerRadius, pickerDiameter, 0, 2 * Math.PI);
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
         
         getPixelColor(pickerCoords);
         return pickerCoords;
@@ -85,14 +89,18 @@ function load() {
 
     function addColor(swatch) {
         let coords = randomCoords();
-        colorList.push(new Color(swatch.id, coords, getPixelColor(coords)));
+        let color = new Color(swatch.id, coords, getPixelColor(coords));
+        colorList.push(color);
+        console.log(`${activeSwatchId} is the active swatch, ${swatch.id} is the active color`);
+
+        if (activeSwatchId === swatch.id) {
+            console.log(color.coords);
+            drawColorWheel(color.coords);
+        }
     }
 
     function fillSwatch(color) {
         document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
-        if (color.swatchId === selectedSwatch) {
-            drawColorWheel(color.coords);
-        }
     };
     
     function getPixelColor(pickerCoords) {
