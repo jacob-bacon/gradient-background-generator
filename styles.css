@@ -76,7 +76,7 @@ h4, h5 {
     border-radius: 3px;
 }
 
-.swatchContainer:hover, .swatchContainer.active {
+.swatchContainer:hover, .swatchContainer.activeSwatch {
     background-color: rgb(56, 56, 56);
 }
 

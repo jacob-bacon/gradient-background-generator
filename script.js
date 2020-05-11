@@ -61,6 +61,8 @@ function load() {
 
     pickerPos = drawColorWheel(randomCoords());
 
+    let selectedSwatch = document.querySelector(".activeSwatch").id;
+
     initialColors.forEach(addColor);
     colorList.forEach(fillSwatch);
 
@@ -88,7 +90,9 @@ function load() {
 
     function fillSwatch(color) {
         document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
-        drawColorWheel(color.coords);
+        if (color.swatchId === selectedSwatch) {
+            drawColorWheel(color.coords);
+        }
     };
     
     function getPixelColor(pickerCoords) {
