@@ -82,13 +82,11 @@ function load() {
     };
 
     function addColor(swatch) {
-        console.log(swatch.id);
         let coords = randomCoords();
         colorList.push(new Color(swatch.id, coords, getPixelColor(coords)));
     }
 
     function fillSwatch(color) {
-        console.log(color);
         document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
         drawColorWheel(color.coords);
     };
@@ -104,7 +102,7 @@ function load() {
         body.style.background = bgStyleText;
     };
 
-    //for setting a random picker for initial colors
+    //for setting a random picker position for new colors
     function randomCoords() {
         let x = Math.floor(Math.random() * (170 - 30 + 1) + 30);
         let y = Math.floor(Math.random() * (170 - 30 + 1) + 30);
