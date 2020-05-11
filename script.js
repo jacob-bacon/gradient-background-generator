@@ -91,10 +91,9 @@ function load() {
         let coords = randomCoords();
         let color = new Color(swatch.id, coords, getPixelColor(coords));
         colorList.push(color);
-        console.log(`${activeSwatchId} is the active swatch, ${swatch.id} is the active color`);
 
         if (activeSwatchId === swatch.id) {
-            console.log(color.coords);
+            pickerPos = color.coords;
             drawColorWheel(color.coords);
         }
     }
