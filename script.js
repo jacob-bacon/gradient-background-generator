@@ -82,6 +82,7 @@ function load() {
     };
 
     function addColor(swatch) {
+        console.log(swatch.id);
         let coords = randomCoords();
         colorList.push(new Color(swatch.id, coords, getPixelColor(coords)));
     }
