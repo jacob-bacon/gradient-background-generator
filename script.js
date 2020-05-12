@@ -81,6 +81,10 @@ function load() {
         return pickerCoords;
     };
 
+    function changeActiveSwatch(currActiveSwatch) {
+        console.log(currActiveSwatch);
+    }
+
     function addColor(swatch) {
         let coords = randomCoords();
         let color = new Color(swatch.id, coords, getPixelColor(coords));    
@@ -91,12 +95,13 @@ function load() {
             drawColorWheel(color.coords);
         }
 
-        swatch.parentNode.addEventListener("click", e => {
-            activeSwatchContainer.classList.remove("activeSwatch");
-            e.target.classList.add("activeSwatch");
-            activeSwatchContainer = (document.querySelectorAll(".activeSwatch"))[0];
-            activeSwatchId = activeSwatchContainer.childNodes[1].id;
-        });
+        swatch.parentNode.addEventListener("click", changeActiveSwatch()) 
+        // {
+        //     activeSwatchContainer.classList.remove("activeSwatch");
+        //     e.target.classList.add("activeSwatch");
+        //     activeSwatchContainer = (document.querySelectorAll(".activeSwatch"))[0];
+        //     activeSwatchId = activeSwatchContainer.childNodes[1].id;
+        // });
     }
 
     function fillSwatch(color) {
