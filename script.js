@@ -100,6 +100,7 @@ function load() {
 
     function updateColor(e, activeSwatchId) {
         let colorToUpdate = colorList.find(color => color.id === activeSwatchId);
+        console.log(colorToUpdate);
         colorToUpdate.coords = drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]);
         colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
         fillSwatch(colorToUpdate.rgb);
