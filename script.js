@@ -25,12 +25,10 @@ function load() {
 
     colorWheelImage.crossOrigin = "Anonymous";
 
-    class Color {
-        constructor(swatchId, coords, rgb) {
-            this.swatchId = swatchId;
-            this.coords = coords;
-            this.rgb = rgb;
-        };
+    function Color(swatchId, coords, rgb) {
+        this.swatchId = swatchId;
+        this.coords = coords;
+        this.rgb = rgb;
     };
 
     
@@ -85,8 +83,9 @@ function load() {
 
     function addColor(swatch) {
         let coords = randomCoords();
-        let color = new Color(swatch.id, coords, getPixelColor(coords));
+        let color = new Color(swatch.id, coords, getPixelColor(coords));    
         colorList.push(color);
+        console.log(colorList);
 
         if (activeSwatchId === swatch.id) {
             pickerPos = color.coords;
@@ -100,7 +99,6 @@ function load() {
 
     function updateColor(e, activeSwatchId) {
         let colorToUpdate = colorList.find(item => item.id === activeSwatchId);
-        console.log(`Color lit: ${colorList}`);
 
         colorToUpdate.coords = drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]);
         colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
