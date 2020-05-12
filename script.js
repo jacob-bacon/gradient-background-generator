@@ -1,8 +1,6 @@
 function load() {
 
     let body = document.getElementById("gradientContainer");
-    let color1 = document.querySelector(".color1");
-    let color2 = document.querySelector(".color2");
     let direction = document.querySelector(".direction");
     let bgTextOutput = document.querySelector("h5");
     
@@ -124,8 +122,8 @@ function load() {
     };
 
     function updateBg(){
-        allSwatchColors = colorList.map(color => color.rgb);
-        bgStyleText = `linear-gradient(${direction.value}deg, rgb(${allSwatchColors[0]}), rgb(${allSwatchColors[1]}))`;
+        allSwatchColors = colorList.map(color => `rgba(${color.rgb})`);
+        bgStyleText = `linear-gradient(${direction.value}deg, ${allSwatchColors})`;
         bgTextOutput.innerText = `background: ${bgStyleText};`;
         body.style.background = bgStyleText;
     };
