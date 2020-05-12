@@ -19,7 +19,8 @@ function load() {
     
     let initialColors = document.querySelectorAll(".swatch");
     let colorList = [];
-    let activeSwatchId = (document.querySelectorAll(".activeSwatch"))[0].childNodes[1].id;
+    let activeSwatchContainer = (document.querySelectorAll(".activeSwatch"))[0];
+    let activeSwatchId = activeSwatchContainer.childNodes[1].id;
     
     let bgStyleText = "";
 
@@ -91,7 +92,9 @@ function load() {
         }
 
         swatch.parentNode.addEventListener("click", e => {
-            console.log(e);
+            activeSwatchContainer.classList.remove("activeSwatch");
+            e.classList.add("activeSwatch");
+            activeSwatchId = activeSwatchContainer.childNodes[1].id;
         });
     }
 
