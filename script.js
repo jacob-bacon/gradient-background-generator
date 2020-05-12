@@ -76,13 +76,17 @@ function load() {
             ctx.lineWidth = 2;
             ctx.stroke();
 
+            pickerPos = pickerCoords;
             getPixelColor(pickerCoords);
         }
         return pickerCoords;
     };
 
-    function changeActiveSwatch(currActiveSwatch) {
-        console.log(currActiveSwatch);
+    function changeActiveSwatch(clickedSwatchContainer) {
+        activeSwatchContainer.classList.remove("activeSwatch");
+        clickedSwatchContainer.classList.add("activeSwatch");
+        activeSwatchContainer = clickedSwatchContainer;
+        activeSwatchId = activeSwatchContainer.childNodes[1].id;
     }
 
     function addColor(swatch) {
@@ -98,13 +102,6 @@ function load() {
         swatch.parentNode.addEventListener("click", e => {
             changeActiveSwatch(swatch.parentNode);
         });
-
-        // {
-        //     activeSwatchContainer.classList.remove("activeSwatch");
-        //     e.target.classList.add("activeSwatch");
-        //     activeSwatchContainer = (document.querySelectorAll(".activeSwatch"))[0];
-        //     activeSwatchId = activeSwatchContainer.childNodes[1].id;
-        // });
     }
 
     function fillSwatch(color) {
