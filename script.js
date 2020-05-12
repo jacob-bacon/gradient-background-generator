@@ -97,14 +97,12 @@ function load() {
     };
 
     function updateColor(e, activeSwatchId) {
-        console.log(colorList);
         let colorToUpdate = colorList[colorList.findIndex(color => color.swatchId === activeSwatchId)];
         console.log(colorToUpdate);
 
         colorToUpdate.coords = drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]);
         colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
         fillSwatch(colorToUpdate);
-        console.log(colorList);
 
     };
     
