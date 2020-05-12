@@ -94,6 +94,7 @@ function load() {
         swatch.parentNode.addEventListener("click", e => {
             activeSwatchContainer.classList.remove("activeSwatch");
             e.classList.add("activeSwatch");
+            activeSwatchContainer = (document.querySelectorAll(".activeSwatch"))[0];
             activeSwatchId = activeSwatchContainer.childNodes[1].id;
         });
     }
