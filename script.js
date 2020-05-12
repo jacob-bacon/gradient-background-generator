@@ -85,7 +85,6 @@ function load() {
         let coords = randomCoords();
         let color = new Color(swatch.id, coords, getPixelColor(coords));    
         colorList.push(color);
-        console.log(colorList);
 
         if (activeSwatchId === swatch.id) {
             pickerPos = color.coords;
@@ -99,6 +98,7 @@ function load() {
 
     function updateColor(e, activeSwatchId) {
         let colorToUpdate = colorList.find(item => item.id === activeSwatchId);
+        console.log(colorToUpdate);
 
         colorToUpdate.coords = drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]);
         colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
