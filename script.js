@@ -31,10 +31,6 @@ function load() {
         this.rgb = rgb;
     };
 
-    initialColors.addEventListener("click", e => {
-        console.log(activeSwatchId.parentNode);
-    });
-
     //add event listeners
     colorWheelCanvas.addEventListener("mousedown", e => {
         e.preventDefault();
@@ -93,6 +89,10 @@ function load() {
             pickerPos = color.coords;
             drawColorWheel(color.coords);
         }
+
+        swatch.addEventListener("click", e => {
+            console.log(activeSwatchId.parentNode);
+        });
     }
 
     function fillSwatch(color) {
