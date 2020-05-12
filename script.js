@@ -95,7 +95,10 @@ function load() {
             drawColorWheel(color.coords);
         }
 
-        swatch.parentNode.addEventListener("click", changeActiveSwatch()) 
+        swatch.parentNode.addEventListener("click", e => {
+            changeActiveSwatch(e);
+        });
+
         // {
         //     activeSwatchContainer.classList.remove("activeSwatch");
         //     e.target.classList.add("activeSwatch");
