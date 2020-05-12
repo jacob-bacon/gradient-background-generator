@@ -115,6 +115,7 @@ function load() {
         colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
 
         fillSwatch(colorToUpdate);
+        updateBg();
     };
     
     function getPixelColor(pickerCoords) {
