@@ -123,7 +123,8 @@ function load() {
     };
 
     function updateBg(){
-        bgStyleText = `linear-gradient(${direction.value}deg, ${color1.value}, ${color2.value})`;
+        allSwatchColors = colorList.map(color => color.rgb);
+        bgStyleText = `linear-gradient(${direction.value}deg, rgb(${allSwatchColors[0]}), rgb(${allSwatchColors[1]}))`;
         bgTextOutput.innerText = `background: ${bgStyleText};`;
         body.style.background = bgStyleText;
     };
