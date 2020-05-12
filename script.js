@@ -90,8 +90,8 @@ function load() {
             drawColorWheel(color.coords);
         }
 
-        swatch.addEventListener("click", e => {
-            console.log(activeSwatchId.parentNode);
+        swatch.parentNode.addEventListener("click", e => {
+            console.log(e);
         });
     }
 
