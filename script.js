@@ -87,6 +87,7 @@ function load() {
         clickedSwatchContainer.classList.add("activeSwatch");
         activeSwatchContainer = clickedSwatchContainer;
         activeSwatchId = activeSwatchContainer.childNodes[1].id;
+        drawColorWheel((colorList[colorList.findIndex(color => color.swatchId === activeSwatchId)]).coords);
     }
 
     function addColor(swatch) {
