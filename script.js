@@ -19,6 +19,7 @@ function load() {
     
     let initialColors = document.querySelectorAll(".swatch");
     let colorList = [];
+    let activeSwatchId = (document.querySelectorAll(".activeSwatch"))[0].childNodes[1].id;
     
     let bgStyleText = "";
 
@@ -37,13 +38,13 @@ function load() {
     colorWheelCanvas.addEventListener("mousedown", e => {
         e.preventDefault();
         isMoving = true;
-        getPixelColor(drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]));
+        updateColor(e, activeSwatchId);
     });
 
     colorWheelCanvas.addEventListener("mousemove", e => {
         if (isMoving === true) {
             e.preventDefault();
-            getPixelColor(drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]));
+            updateColor(e, activeSwatchId);
         };
     });
 
@@ -58,10 +59,6 @@ function load() {
     color1.addEventListener("input", updateBg);
     color2.addEventListener("input", updateBg);
     direction.addEventListener("input", updateBg);
-
-    //pickerPos = drawColorWheel(randomCoords());
-
-    let activeSwatchId = (document.querySelectorAll(".activeSwatch"))[0].childNodes[1].id;
 
     drawColorWheel();
     initialColors.forEach(addColor);
@@ -99,6 +96,13 @@ function load() {
 
     function fillSwatch(color) {
         document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
+    };
+
+    function updateColor(e, activeSwatchId) {
+        let colorToUpdate = colorList.find(color => color.id === activeSwatchId);
+        colorToUpdate.coords = drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]);
+        colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
+        fillSwatch(colorToUpdate.rgb);
     };
     
     function getPixelColor(pickerCoords) {
