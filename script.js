@@ -31,7 +31,10 @@ function load() {
         this.rgb = rgb;
     };
 
-    
+    initialColors.addEventListener("click", e => {
+        console.log(activeSwatchId.parentNode);
+    });
+
     //add event listeners
     colorWheelCanvas.addEventListener("mousedown", e => {
         e.preventDefault();
@@ -100,11 +103,8 @@ function load() {
         let colorToUpdate = colorList[colorList.findIndex(color => color.swatchId === activeSwatchId)];
         colorToUpdate.coords = drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]);
         colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
-        console.log(colorToUpdate.rgb);
-        console.log(colorList[colorList.findIndex(color => color.swatchId === activeSwatchId)].rgb);
 
         fillSwatch(colorToUpdate);
-
     };
     
     function getPixelColor(pickerCoords) {
