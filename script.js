@@ -96,7 +96,7 @@ function load() {
         }
 
         swatch.parentNode.addEventListener("click", e => {
-            changeActiveSwatch(e);
+            changeActiveSwatch(this);
         });
 
         // {
