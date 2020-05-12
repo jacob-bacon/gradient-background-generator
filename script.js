@@ -112,6 +112,8 @@ function load() {
         colorToUpdate.coords = drawColorWheel([e.clientX - canvasStartX, e.clientY - canvasStartY]);
         colorToUpdate.rgb = getPixelColor(colorToUpdate.coords);
 
+        (activeSwatchContainer.childNodes[2]).childNodes[1].innerText = `RGBA: ${colorToUpdate.rgb}`;
+
         fillSwatch(colorToUpdate);
         updateBg();
     };
