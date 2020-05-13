@@ -52,8 +52,6 @@ function load() {
         drawColorWheel(pickerPos);
     });
 
-    color1.addEventListener("input", updateBg);
-    color2.addEventListener("input", updateBg);
     direction.addEventListener("input", updateBg);
 
     drawColorWheel();
@@ -104,7 +102,10 @@ function load() {
     }
 
     function fillSwatch(color) {
-        document.getElementById(color.swatchId).style.background = `rgba(${(color.rgb).join()})`;
+        let swatch = document.getElementById(color.swatchId);
+        swatch.style.background = `rgba(${(color.rgb).join()})`;
+
+        console.log(swatch.nextSibling.childNodes);
     };
 
     function updateColor(e, activeSwatchId) {
