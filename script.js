@@ -63,6 +63,7 @@ function load() {
         canvasStartY = (colorWheelCanvas.getBoundingClientRect().top);    
         
         ctx.clearRect(0, 0, colorWheelCanvas.width, colorWheelCanvas.height);
+        colorWheelImage.style.display = "block";
         ctx.drawImage(colorWheelImage, 0, 0, 204, 204, 0, 0, 204, 204);
         colorWheelImage.style.display = "none";
         
@@ -106,7 +107,6 @@ function load() {
         swatch.style.background = `rgba(${(color.rgb).join()})`;
 
         (((swatch.nextSibling).nextSibling).childNodes[1]).innerText = `RGBA: ${color.rgb}`;
-        console.log(((swatch.nextSibling).nextSibling).childNodes[1]);
     };
 
     function updateColor(e, activeSwatchId) {
