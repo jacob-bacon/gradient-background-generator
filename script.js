@@ -105,8 +105,8 @@ function load() {
         let swatch = document.getElementById(color.swatchId);
         swatch.style.background = `rgba(${(color.rgb).join()})`;
 
-        //((((swatch.nextSibling).nextSibling).nextSibling).childNodes[0]).innerText = `RGBA: ${color.rgb}`;
-        console.log(((swatch.nextSibling).nextSibling));
+        (((swatch.nextSibling).nextSibling).childNodes[1]).innerText = `RGBA: ${color.rgb}`;
+        console.log(((swatch.nextSibling).nextSibling).childNodes[1]);
     };
 
     function updateColor(e, activeSwatchId) {
